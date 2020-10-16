@@ -11,10 +11,27 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{41A97371-DE56-41F8-92AF-40860F0A1AD6}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{CC1AD768-ABC6-4E10-BF08-6B91BD6E0255}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Trainer.ETLDemoDB.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B261DFE1-32B5-4EA0-8030-CEA815E13064}"
+      DTS:ObjectName="Trainer.ETLDemoDB.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=Trainer;User ID=sa;Initial Catalog=ETLDemoDB;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASx6I7sbgI0emi/Jkl1gbhQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA7QocQLzrRtmo0+BL8Q9Mg0Ldeo/DrXu8qPXVGKabk2QAAAAAOgAAAAAIAACAAAAAg1tZQE10eryxLxPD2c80rLPbXzjD7ge2XR5j14IXxxCAAAADry8CTZ0fJpD+Ka59krnIjUg7sMdi7p29Gkl8gKfL+gUAAAAD1szJHz6GphV/SSMuncyficJTV8dWHZFSojo5xMrMHrHziTWkDp3WtTk0lOhy7BIAunbJfOED90v+OwCLIIuWL</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -29,7 +46,320 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          version="1" />
+          version="1">
+          <components>
+            <component
+              refId="Package\TPf 1\OLE DB-Quelle"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB-Quelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;7"
+              description="OLE DB-Quelle"
+              name="OLE DB-Quelle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[SrcTab1]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Die Variable, die den auszuführenden SQL-Befehl enthält."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Die Zuordnungen zwischen den Parametern im SQL-Befehl und den Variablen."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TPf 1\OLE DB-Quelle.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Trainer.ETLDemoDB.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[Trainer.ETLDemoDB.sa]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]"
+                  name="Ausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[prod_id]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[prod_id]"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[prod_id]"
+                      name="prod_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[prod_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[prod_name]"
+                      length="25"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[prod_name]"
+                      name="prod_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[date_created]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[date_created]"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[date_created]"
+                      name="date_created"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[net]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[net]"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[net]"
+                      name="net"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[prod_id]"
+                      dataType="i2"
+                      name="prod_id" />
+                    <externalMetadataColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[prod_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="prod_name" />
+                    <externalMetadataColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[date_created]"
+                      dataType="dbTimeStamp"
+                      name="date_created" />
+                    <externalMetadataColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[net]"
+                      dataType="cy"
+                      name="net" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[prod_id]"
+                      dataType="i2"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[prod_id]"
+                      name="prod_id" />
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[prod_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[prod_name]"
+                      name="prod_name" />
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[date_created]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[date_created]"
+                      name="date_created" />
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[net]"
+                      dataType="cy"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[net]"
+                      name="net" />
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TPf 1\OLE DB-Ziel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[DstTab1]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TPf 1\OLE DB-Ziel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Trainer.ETLDemoDB.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[Trainer.ETLDemoDB.sa]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[prod_id]"
+                      cachedDataType="i2"
+                      cachedName="prod_id"
+                      externalMetadataColumnId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[produkt_id]"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[prod_id]" />
+                    <inputColumn
+                      refId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[prod_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="prod_name"
+                      externalMetadataColumnId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[produkt_name]"
+                      lineageId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[prod_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[produkt_id]"
+                      dataType="i2"
+                      name="produkt_id" />
+                    <externalMetadataColumn
+                      refId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[produkt_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="produkt_name" />
+                    <externalMetadataColumn
+                      refId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[erzeugungs_datum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="erzeugungs_datum" />
+                    <externalMetadataColumn
+                      refId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[brutto]"
+                      dataType="cy"
+                      name="brutto" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TPf 1\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TPf 1\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TPf 1\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TPf 1\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TPf 1.Paths[Ausgabe der OLE DB-Quelle]"
+              endId="Package\TPf 1\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der OLE DB-Quelle"
+              startId="Package\TPf 1\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -52,5 +382,81 @@
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\TPf 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="148,42"
+          Id="Package\TPf 1\OLE DB-Quelle"
+          TopLeft="165,193" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\TPf 1\OLE DB-Ziel"
+          TopLeft="211,370" />
+        <EdgeLayout
+          Id="Package\TPf 1.Paths[Ausgabe der OLE DB-Quelle]"
+          TopLeft="239,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.5,135"
+              Start="0,0"
+              End="39.5,127.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.5"
+                    Point2="0,67.5"
+                    Point3="4,67.5" />
+                  <mssgle:LineSegment
+                    End="35.5,67.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.5,67.5"
+                    Point2="39.5,67.5"
+                    Point3="39.5,71.5" />
+                  <mssgle:LineSegment
+                    End="39.5,127.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TPf 1\OLE DB-Quelle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TPf 1\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
